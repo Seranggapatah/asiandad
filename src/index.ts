@@ -1,7 +1,8 @@
 /*
-  Load cute_bee.riv
+  Load kanguru_-_david_weller.riv
   Artboard: Artboard
   ViewModel number: state
+  0 idle, 1 run, 2 jump, 3 slide
 */
 
 import "./styles.css";
@@ -15,17 +16,23 @@ interface ViewModelInstance {
   number(name: string): NumberProperty;
 }
 
+const STATES = [
+  { value: 0, label: "Idle" },
+  { value: 1, label: "Run" },
+  { value: 2, label: "Jump" },
+  { value: 3, label: "Slide" },
+] as const;
+
 const layout = new Layout({
   fit: Fit.Contain,
 });
 
 const riveCanvas = document.getElementById("rive-canvas") as HTMLCanvasElement;
-const stateInput = document.getElementById("state-input") as HTMLInputElement;
-const stateValueLabel = document.getElementById(
-  "state-value",
-) as HTMLSpanElement;
+const stateButtons = Array.from(
+  document.querySelectorAll<HTMLButtonElement>(".state-buttons button"),
+);
 
-const riveSrc = new URL("./cute_bee.riv", import.meta.url).href;
+const riveSrc = new URL("./kanguru_-_david_weller.riv", import.meta.url).href;
 
 const logDebug = (
   label: string,
@@ -40,9 +47,12 @@ const logDebug = (
   console.log(`[${time}] [${label}] ${message}`);
 };
 
-const setStateUi = (value: number): void => {
-  stateInput.value = String(value);
-  stateValueLabel.textContent = String(value);
+const setActiveButton = (value: number): void => {
+  for (const button of stateButtons) {
+    const isActive = Number(button.dataset.state) === value;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  }
 };
 
 const r = new Rive({
@@ -54,7 +64,7 @@ const r = new Rive({
   autoplay: true,
   autoBind: true,
   onLoad: (): void => {
-    logDebug("Rive", "cute_bee.riv loaded");
+    logDebug("Rive", "kanguru_-_david_weller.riv loaded");
     r.resizeDrawingSurfaceToCanvas();
 
     const vmi = r.viewModelInstance as ViewModelInstance | null;
@@ -76,22 +86,30 @@ const r = new Rive({
     }
 
     logDebug("VM Bind", 'number "state" OK', { value: stateProperty.value });
-    setStateUi(stateProperty.value);
-    stateInput.disabled = false;
+    setActiveButton(stateProperty.value);
 
-    stateInput.addEventListener("input", () => {
-      const nextValue = Number(stateInput.value);
-      if (Number.isNaN(nextValue)) {
-        return;
-      }
+    for (const button of stateButtons) {
+      button.disabled = false;
+      button.addEventListener("click", () => {
+        const nextValue = Number(button.dataset.state);
+        if (Number.isNaN(nextValue)) {
+          return;
+        }
 
-      stateProperty.value = nextValue;
-      stateValueLabel.textContent = String(nextValue);
-      logDebug("State", "ViewModel number updated", { value: nextValue });
-    });
+        stateProperty.value = nextValue;
+        setActiveButton(nextValue);
+        const label =
+          STATES.find((state) => state.value === nextValue)?.label ??
+          String(nextValue);
+        logDebug("State", "ViewModel number updated", {
+          value: nextValue,
+          label,
+        });
+      });
+    }
   },
   onLoadError: (error): void => {
-    console.error("Failed to load cute_bee.riv:", error);
+    console.error("Failed to load kanguru_-_david_weller.riv:", error);
   },
 });
 
