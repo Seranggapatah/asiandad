@@ -9,8 +9,9 @@ body {
   inset: 0;
   width: 100%;
   height: 100dvh;
-  background-color: black;
+  background-color: rgb(229, 214, 214);
   pointer-events: none;
+  z-index: -1;
 }
 
 .controls {
@@ -49,6 +50,20 @@ body {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+
+  background: #222;
+  color: #fff;
+
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
 }
 
 .state-buttons button:hover:not(:disabled) {
