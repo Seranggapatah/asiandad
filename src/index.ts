@@ -8,6 +8,7 @@ const layout = new Layout({
 const riveCanvas = document.getElementById("rive-canvas") as HTMLCanvasElement;
 const button1 = document.getElementById("button") as HTMLButtonElement;
 const button2 = document.getElementById("button2") as HTMLButtonElement;
+const button3 = document.getElementById("button3") as HTMLButtonElement;
 const riveSrc = new URL(
   "./janCat.riv",
   import.meta.url
