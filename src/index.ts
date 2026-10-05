@@ -6,18 +6,20 @@ const layout = new Layout({
 });
 
 const riveCanvas = document.getElementById("rive-canvas") as HTMLCanvasElement;
-const button1 = document.getElementById("button") as HTMLButtonElement;
-const button2 = document.getElementById("button2") as HTMLButtonElement;
-const button3 = document.getElementById("button3") as HTMLButtonElement;
+const riveCanvas2 = document.getElementById("rive-canvas2") as HTMLCanvasElement;
+const riveCanvas3 = document.getElementById("rive-canvas3") as HTMLCanvasElement;
+const riveCanvas4 = document.getElementById("rive-canvas4") as HTMLCanvasElement;
+const riveCanvas5 = document.getElementById("rive-canvas5") as HTMLCanvasElement;
+
 const riveSrc = new URL(
-  "./janCat.riv",
+  "./jihoonChar.riv",
   import.meta.url
 ).href;
 
 const r = new Rive({
   src: riveSrc,
-  canvas: riveCanvas,
-  artboard: "Artboard",
+  canvas: riveCanvas2,
+  artboard: "Thriving",
   stateMachines: "State Machine 1",
   layout,
   autoplay: true,
@@ -25,31 +27,63 @@ const r = new Rive({
  
   onLoad: (): void => {
     r.resizeDrawingSurfaceToCanvas();
-
-    const vmi = r.viewModelInstance as ViewModelInstance | null;
-    if (!vmi) {
-      console.error("ViewModel instance not available");
-      return;
-    }
-
-    button1.addEventListener("click", changeNumber);
-    function changeNumber(): void {
-    vmi.number("numberProperty1").value = 1;
-    console.log("button1 clicked");
-    }
-    button2.addEventListener("click", changeNumber2);
-    function changeNumber2(): void {
-    vmi.number("numberProperty1").value = 2;
-    console.log("button2 clicked");
-    }
-    button3.addEventListener("click", changeNumber3);
-    function changeNumber3(): void {
-    vmi.number("numberProperty1").value = 0;
-    console.log("button3 clicked");
-    }
   },
-  onLoadError: (error: Error): void => {
-    console.error("Failed to load cute_bee.riv:", error);
+});
+
+
+const r2 = new Rive({
+  src: riveSrc,
+  canvas: riveCanvas,
+  artboard: "happy",
+  stateMachines: "State Machine 1",
+  layout,
+  autoplay: true,
+  autoBind: true,
+ 
+  onLoad: (): void => {
+    r.resizeDrawingSurfaceToCanvas();
+  },
+});
+
+const r3 = new Rive({
+  src: riveSrc,
+  canvas: riveCanvas3,
+  artboard: "needcare",
+  stateMachines: "State Machine 1",
+  layout,
+  autoplay: true,
+  autoBind: true,
+ 
+  onLoad: (): void => {
+    r.resizeDrawingSurfaceToCanvas();
+  },
+});
+
+const r4 = new Rive({
+  src: riveSrc,
+  canvas: riveCanvas4,
+  artboard: "Neglected",
+  stateMachines: "State Machine 1",
+  layout,
+  autoplay: true,
+  autoBind: true,
+ 
+  onLoad: (): void => {
+    r.resizeDrawingSurfaceToCanvas();
+  },
+});
+
+const r5 = new Rive({
+  src: riveSrc,
+  canvas: riveCanvas5,
+  artboard: "Scan",
+  stateMachines: "State Machine 1",
+  layout,
+  autoplay: true,
+  autoBind: true,
+ 
+  onLoad: (): void => {
+    r.resizeDrawingSurfaceToCanvas();
   },
 });
 

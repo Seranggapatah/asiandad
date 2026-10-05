@@ -1,81 +1,11 @@
-body {
-  font-family: sans-serif;
-  overflow: clip;
-  margin: 0;
-}
 
-#rive-canvas {
-  position: absolute;
-  inset: 0;
+.rive-char {
   width: 100%;
-  height: 100dvh;
-  background-color: rgb(229, 214, 214);
-  pointer-events: none;
-  z-index: -1;
-}
-
-.controls {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  width: min(100% - 32px, 960px);
-  pointer-events: none;
-}
-
-.state-buttons {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
   padding: 8px;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  pointer-events: auto;
-}
-
-.state-buttons button {
-  min-width: 72px;
-  padding: 8px 14px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  background: transparent;
-  color: #111;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 12px;
-
-  background: #222;
-  color: #fff;
-
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: all 0.2s ease;
-}
-
-.state-buttons button:hover:not(:disabled) {
-  background: #f3f3f3;
-}
-
-.state-buttons button.is-active {
-  background: #111;
-  color: #fff;
-}
-
-.state-buttons button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  background: #000000;
 }
