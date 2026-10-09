@@ -5,7 +5,7 @@ const layout = new Layout({
   fit: Fit.Contain,
 });
 
-const riveCanvas = document.getElementById("rive-canvas") as HTMLCanvasElement;
+const riveCanvas = document.getElementById("rive-canvas1") as HTMLCanvasElement;
 const riveCanvas2 = document.getElementById("rive-canvas2") as HTMLCanvasElement;
 
 const riveSrc = new URL(
@@ -23,6 +23,7 @@ const r = new Rive({
   autoBind: true,
  
   onLoad: (): void => {
+    r.resizeDrawingSurfaceToCanvas();
     const vmi = r.viewModelInstance as ViewModelInstance | null;
 
     const booleanProperty = vmi.boolean("right");
@@ -57,7 +58,7 @@ const r = new Rive({
       numberProperty.value = 3;
     });
 
-    r.resizeDrawingSurfaceToCanvas();
+
   },
 });
 
@@ -72,7 +73,7 @@ const r2 = new Rive({
   autoBind: true,
  
   onLoad: (): void => {
-    r.resizeDrawingSurfaceToCanvas();
+    r2.resizeDrawingSurfaceToCanvas();
     const vmi = r2.viewModelInstance as ViewModelInstance | null;
 
     document.getElementById("idle").addEventListener("click", () => {
@@ -110,3 +111,6 @@ window.addEventListener("resize", () => {
   r.resizeDrawingSurfaceToCanvas();
 });
 
+window.addEventListener("resize", () => {
+  r2.resizeDrawingSurfaceToCanvas();
+});
