@@ -9,3 +9,16 @@
   padding: 8px;
   background: #000000;
 }
+
+.my-btm {
+  padding: 12px 24px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.my-button:hover {
+  background: #0056b3;
+}

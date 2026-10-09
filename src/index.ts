@@ -7,25 +7,56 @@ const layout = new Layout({
 
 const riveCanvas = document.getElementById("rive-canvas") as HTMLCanvasElement;
 const riveCanvas2 = document.getElementById("rive-canvas2") as HTMLCanvasElement;
-const riveCanvas3 = document.getElementById("rive-canvas3") as HTMLCanvasElement;
-const riveCanvas4 = document.getElementById("rive-canvas4") as HTMLCanvasElement;
-const riveCanvas5 = document.getElementById("rive-canvas5") as HTMLCanvasElement;
 
 const riveSrc = new URL(
-  "./jihoonChar.riv",
+  "./asian_dad.riv",
   import.meta.url
 ).href;
 
 const r = new Rive({
   src: riveSrc,
   canvas: riveCanvas2,
-  artboard: "Thriving",
+  artboard: "Artboard",
   stateMachines: "State Machine 1",
   layout,
   autoplay: true,
   autoBind: true,
  
   onLoad: (): void => {
+    const vmi = r.viewModelInstance as ViewModelInstance | null;
+
+    const booleanProperty = vmi.boolean("right");
+    const booleanValue = booleanProperty.value;
+    booleanProperty.value = true;
+    
+    document.getElementById("idle").addEventListener("click", () => {
+      console.log("Play diklik");
+      const numberProperty = vmi.number("state");
+      const numberValue = numberProperty.value;
+      numberProperty.value = 0;
+    });
+
+    document.getElementById("satisfied").addEventListener("click", () => {
+      console.log("Play diklik");
+      const numberProperty = vmi.number("state");
+      const numberValue = numberProperty.value;
+      numberProperty.value = 1;
+    });
+
+    document.getElementById("angry").addEventListener("click", () => {
+      console.log("Play diklik");
+      const numberProperty = vmi.number("state");
+      const numberValue = numberProperty.value;
+      numberProperty.value = 2;
+    });
+
+    document.getElementById("superangry").addEventListener("click", () => {
+      console.log("Play diklik");
+      const numberProperty = vmi.number("state");
+      const numberValue = numberProperty.value;
+      numberProperty.value = 3;
+    });
+
     r.resizeDrawingSurfaceToCanvas();
   },
 });
@@ -34,7 +65,7 @@ const r = new Rive({
 const r2 = new Rive({
   src: riveSrc,
   canvas: riveCanvas,
-  artboard: "happy",
+  artboard: "Artboard",
   stateMachines: "State Machine 1",
   layout,
   autoplay: true,
@@ -42,51 +73,40 @@ const r2 = new Rive({
  
   onLoad: (): void => {
     r.resizeDrawingSurfaceToCanvas();
-  },
-});
+    const vmi = r2.viewModelInstance as ViewModelInstance | null;
 
-const r3 = new Rive({
-  src: riveSrc,
-  canvas: riveCanvas3,
-  artboard: "needcare",
-  stateMachines: "State Machine 1",
-  layout,
-  autoplay: true,
-  autoBind: true,
- 
-  onLoad: (): void => {
-    r.resizeDrawingSurfaceToCanvas();
-  },
-});
+    document.getElementById("idle").addEventListener("click", () => {
+      console.log("Play diklik");
+      const numberProperty = vmi.number("state");
+      const numberValue = numberProperty.value;
+      numberProperty.value = 0;
+    });
 
-const r4 = new Rive({
-  src: riveSrc,
-  canvas: riveCanvas4,
-  artboard: "Neglected",
-  stateMachines: "State Machine 1",
-  layout,
-  autoplay: true,
-  autoBind: true,
- 
-  onLoad: (): void => {
-    r.resizeDrawingSurfaceToCanvas();
-  },
-});
+    document.getElementById("satisfied").addEventListener("click", () => {
+      console.log("Play diklik");
+      const numberProperty = vmi.number("state");
+      const numberValue = numberProperty.value;
+      numberProperty.value = 1;
+    });
 
-const r5 = new Rive({
-  src: riveSrc,
-  canvas: riveCanvas5,
-  artboard: "Scan",
-  stateMachines: "State Machine 1",
-  layout,
-  autoplay: true,
-  autoBind: true,
- 
-  onLoad: (): void => {
-    r.resizeDrawingSurfaceToCanvas();
+    document.getElementById("angry").addEventListener("click", () => {
+      console.log("Play diklik");
+      const numberProperty = vmi.number("state");
+      const numberValue = numberProperty.value;
+      numberProperty.value = 2;
+    });
+
+    document.getElementById("superangry").addEventListener("click", () => {
+      console.log("Play diklik");
+      const numberProperty = vmi.number("state");
+      const numberValue = numberProperty.value;
+      numberProperty.value = 3;
+    });
+
   },
 });
 
 window.addEventListener("resize", () => {
   r.resizeDrawingSurfaceToCanvas();
 });
+
