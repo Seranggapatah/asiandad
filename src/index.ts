@@ -9,7 +9,7 @@ const riveCanvas = document.getElementById("rive-canvas1") as HTMLCanvasElement;
 const riveCanvas2 = document.getElementById("rive-canvas2") as HTMLCanvasElement;
 
 const riveSrc = new URL(
-  "./asian_dad.riv",
+  "./asian_dadv2.riv",
   import.meta.url
 ).href;
 
@@ -21,15 +21,35 @@ const r = new Rive({
   layout,
   autoplay: true,
   autoBind: true,
- 
+
   onLoad: (): void => {
     r.resizeDrawingSurfaceToCanvas();
     const vmi = r.viewModelInstance as ViewModelInstance | null;
 
-    const booleanProperty = vmi.boolean("right");
-    const booleanValue = booleanProperty.value;
-    booleanProperty.value = true;
+    document.getElementById("leftin").addEventListener("click", () => {
+      console.log("LEFT DI KLIK");
+      const triggerProperty = vmi.trigger("leftin");
+      triggerProperty.trigger();
+    });
+
+    document.getElementById("leftout").addEventListener("click", () => {
+      console.log("LEFT DI KLIK");
+      const triggerProperty = vmi.trigger("leftout");
+      triggerProperty.trigger();
+    });
     
+    document.getElementById("rightin").addEventListener("click", () => {
+      console.log("LEFT DI KLIK");
+      const triggerProperty = vmi.trigger("rightin");
+      triggerProperty.trigger();
+    });
+
+    document.getElementById("rightout").addEventListener("click", () => {
+      console.log("LEFT DI KLIK rightout");
+      const triggerProperty = vmi.trigger("rightout");
+      triggerProperty.trigger();
+    });
+
     document.getElementById("idle").addEventListener("click", () => {
       console.log("Play diklik");
       const numberProperty = vmi.number("state");
@@ -75,6 +95,35 @@ const r2 = new Rive({
   onLoad: (): void => {
     r2.resizeDrawingSurfaceToCanvas();
     const vmi = r2.viewModelInstance as ViewModelInstance | null;
+
+    document.getElementById("leftin").addEventListener("click", () => {
+      console.log("LEFT DI KLIK");
+      const triggerProperty = vmi.trigger("leftin");
+      triggerProperty.trigger();
+    });
+
+    document.getElementById("leftout").addEventListener("click", () => {
+      console.log("LEFT DI KLIK");
+      const triggerProperty = vmi.trigger("leftout");
+      triggerProperty.trigger();
+    });
+    
+
+    document.getElementById("rightin").addEventListener("click", () => {
+      console.log("LEFT DI KLIK");
+      const triggerProperty = vmi.trigger("rightin");
+      triggerProperty.trigger();
+    });
+
+    document.getElementById("rightout").addEventListener("click", () => {
+      console.log("LEFT DI KLIK rightout");
+      const triggerProperty = vmi.trigger("rightout");
+      triggerProperty.trigger();
+    });
+
+
+
+    
 
     document.getElementById("idle").addEventListener("click", () => {
       console.log("Play diklik");
