@@ -25,6 +25,10 @@
   cursor: pointer;
 }
 
-.my-button:hover {
-  background: #0056b3;
+.my-btm:hover {
+  background: #79baff;
+}
+
+.my-btm:active {
+  background: #004085;
 }
